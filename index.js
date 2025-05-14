@@ -14,7 +14,9 @@ const uri= process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+     origin: 'https://zerodha1dashboard.netlify.app',
+}));
 app.use(bodyParser.json());
 
 
@@ -216,7 +218,7 @@ app.post('/newOrder', async(req,res)=>{
 })
 
 app.listen(PORT, ()=>{
-    console.log("App started")
+    console.log("App started" +PORT)
     mongoose.connect(uri);
     console.log("DB Connected");
 });
