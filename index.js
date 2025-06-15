@@ -1,8 +1,8 @@
 require("dotenv").config();
 
 const express= require("express");
-const req = require("express/lib/request");
-const res = require("express/lib/response");
+// const req = require("express/lib/request");
+// const res = require("express/lib/response");
 const mongoose=require("mongoose")
 const bodyParser=require("body-parser")
 const cors=require("cors")
@@ -14,9 +14,22 @@ const uri= process.env.MONGO_URL;
 
 const app = express();
 
+// app.use(cors({
+//      origin: 'https://zerodha1dashboard.netlify.app',
+// }));
+
+// Fix: Allow all methods and preflight handling
 app.use(cors({
-     origin: 'https://zerodha1dashboard.netlify.app',
+    origin: true, // or use '*' with `credentials: false`
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true
 }));
+
+// Optional: explicitly handle OPTIONS preflight request
+// app.options("*", cors());
+
+
+
 app.use(bodyParser.json());
 
 
