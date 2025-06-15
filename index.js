@@ -15,9 +15,8 @@ const app = express();
 
 // ✅ Middleware
 app.use(cors({
-    origin: ["http://localhost:5173", "https://zerodha1dashboard.netlify.app","*"],
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    credentials: true,
+  origin: "*", // sabko allow karega
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }));
 app.use(bodyParser.json());
 
